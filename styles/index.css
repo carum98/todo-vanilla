@@ -1,15 +1,9 @@
-/* Layout */
-html, body {
-    height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-}
+@import 'variables.css';
+@import 'general.css';
 
 body {
     display: grid;
     grid-template-rows: 50px 1fr 50px;
-    background-color: var(--base);
-    color-scheme: dark;
-    color: var(--text-color);
 }
 
 header {
@@ -21,10 +15,10 @@ main {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     grid-column-gap: var(--padding);
-    margin: 0 auto;
     background-color: var(--background);
     border-radius: 15px;
     padding: var(--padding);
+    margin: 0 auto;
 
     min-width: 800px;
 
@@ -38,15 +32,6 @@ main {
         border-right: 1px solid gray;
         padding-right: var(--padding);
     }
-}
-
-/* Reset */
-h2 {
-    margin-top: 0;
-}
-
-button {
-    cursor: pointer;
 }
 
 /* Sections */
@@ -63,22 +48,7 @@ button {
     padding: 10px 15px;
     border: none;
     gap: 10px;
-    background-color: #6b6b6b;
-
-    & .actions {
-        display: none;
-        margin-left: auto;
-
-        & > button {
-            background-color: transparent;
-            color: gray;
-            border: none;
-
-            &:hover {
-                color: white;
-            }
-        }
-    }
+    background-color: #3b3b3b;
 
     & span {
         display: inline-block;
@@ -89,7 +59,7 @@ button {
     }
 
     &:hover, &[data-active] {
-        background-color: #333333;
+        background-color: #202020;
 
         & .actions {
             display: inline-block;
@@ -120,26 +90,26 @@ button {
         color: gray;
     }
 
-    & .actions {
-        display: none;
-        margin-left: auto;
-
-        & > button {
-            background-color: transparent;
-            color: gray;
-            border: none;
-
-            &:hover {
-                color: white;
-            }
-        }
-    }
-
     &:hover {
         background-color: #333333;
 
         & .actions {
             display: inline-block;
+        }
+    }
+}
+
+& .actions {
+    display: none;
+    margin-left: auto;
+
+    & > button {
+        background-color: transparent;
+        color: gray;
+        border: none;
+
+        &:hover {
+            color: white;
         }
     }
 }
