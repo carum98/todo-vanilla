@@ -1,0 +1,21 @@
+dialog {
+    background-color: var(--base);
+    border: none;
+    border-radius: 15px;
+    width: 250px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: unset;
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(5px);
+}
+
+dialog [data-close] {
+    position: absolute;
+    top: -30px;
+    right: -25px;
+    font-size: 35px;
+    background: transparent;
+}

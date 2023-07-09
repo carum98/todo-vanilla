@@ -8,10 +8,10 @@ body {
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+    width: 200px;
     align-items: center;
-    justify-content: center;
-    gap: 15px;
-    width: 250px;
+}
+
+input {
+    width: 100%;
 }

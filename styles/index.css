@@ -1,5 +1,6 @@
 @import 'variables.css';
 @import 'general.css';
+@import 'dialogs.css';
 
 body {
     display: grid;
@@ -115,9 +116,8 @@ main {
 }
 
 #logout {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 15px;
+    font-size: 25px;
     padding: 5px 10px;
+    background-color: transparent;
+    color: var(--primary-color);
 }
