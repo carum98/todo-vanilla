@@ -6,9 +6,64 @@
     <title>ToDo App</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='./styles/index.css'>
-    <script src='./scripts/index.js'></script>
+    <script type="module" src='./scripts/index.js'></script>
 </head>
 <body>
-    <h1>ToDo App</h1>
+    <header>
+        <h1>ToDo App</h1>
+
+        <nav>
+            <button id="logout">
+                Logout
+            </button>
+        </nav>
+    </header>
+    <main id="app">
+        <section>
+            <h2>
+                Lists
+                <button data-dialog="form-list">+</button>
+            </h2>
+            <ul id="lists"></ul>
+        </section>
+
+        <section>
+            <h2>
+                ToDos
+                <button data-dialog="form-todo">+</button>
+            </h2>
+            <ul id="todos"></ul>
+        </section>
+    </main>
+    <footer>
+        <small>ToDo App</small>
+    </footer>
+
+    <!-- Dialogs -->
+    <dialog id="form-list">
+        <form>
+            <input type="text" name="name" placeholder="Name">
+            <input type="color" name="color" placeholder="Color">
+            <input type="submit" value="Add">
+        </form>
+        
+        <button data-close>X</button>
+    </dialog>
+
+    <dialog id="form-todo">
+        <form>
+            <input type="text" name="title" placeholder="Title">
+            <input type="text" name="description" placeholder="Description">
+            <input type="submit" value="Add">
+        </form>
+
+        <button data-close>X</button>
+    </dialog>
+
+    <dialog id="confirm">
+        <p data-message></p>
+        <button data-close>Cancel</button>
+        <button data-confirm>Confirm</button>
+    </dialog>
 </body>
 </html>

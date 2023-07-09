@@ -1,0 +1,29 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 50px 1fr 50px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    min-width: 800px;
+    margin: 0 auto;
+}
+
+#lists {
+    & span {
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+    }
+}

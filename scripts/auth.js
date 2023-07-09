@@ -1,4 +1,4 @@
-function authenticate(form, path) {
+function auth(form, path) {
     const formData = new FormData(form)
     const data = Object.fromEntries(formData)
 

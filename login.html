@@ -5,8 +5,8 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>ToDo App - Login</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='./styles/index.css'>
-    <script src='./scripts/authenticate.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='./styles/auth.css'>
+    <script src='./scripts/auth.js'></script>
 </head>
 <body>
     <form>
@@ -23,7 +23,7 @@
         form.addEventListener('submit', (event) => {
             event.preventDefault()
 
-            authenticate(form, '/login')
+            auth(form, '/login')
         })
     </script>
 </body>
