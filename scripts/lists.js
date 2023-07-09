@@ -16,9 +16,9 @@ async function get() {
     const items = []
 
     for (const item of data) {
-        const li = document.createElement('li')
-
         const button = document.createElement('button')
+        button.classList.add('list-item')
+
         const removeButton = document.createElement('button')
         const editButton = document.createElement('button')
 
@@ -26,15 +26,22 @@ async function get() {
 
         span.style.backgroundColor = item.color
 
-        li.setAttribute('data-list-id', item.id)
+        button.setAttribute('data-list-id', item.id)
 
         button.append(span, item.name)
-        removeButton.append('Remove')
-        editButton.append('Edit')
 
-        li.append(button, removeButton, editButton)
+        const div = document.createElement('div')
+        
+        div.classList.add('actions')
 
-        items.push(li)
+        removeButton.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8s8-3.59 8-8s-3.59-8-8-8zm5 9H7v-2h10v2z" opacity=".3"/><path fill="currentColor" d="M7 11h10v2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8z"/></svg>`
+        editButton.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="m19.3 8.925l-4.25-4.2l1.4-1.4q.575-.575 1.413-.575t1.412.575l1.4 1.4q.575.575.6 1.388t-.55 1.387L19.3 8.925ZM4 21q-.425 0-.713-.288T3 20v-2.825q0-.2.075-.388t.225-.337l10.3-10.3l4.25 4.25l-10.3 10.3q-.15.15-.337.225T6.825 21H4Z"/></svg>`
+
+        div.append(removeButton, editButton)
+
+        button.append(div)
+
+        items.push(button)
 
         button.addEventListener('click', () => {
             Todos.get(item.id)
@@ -42,14 +49,17 @@ async function get() {
             const active = document.querySelector('[data-active]')
             active?.attributes.removeNamedItem('data-active')
 
-            button.parentElement?.setAttribute('data-active', '')
+            button.setAttribute('data-active', '')
         })
 
-        removeButton.addEventListener('click', () => {
+        removeButton.addEventListener('click', (event) => {
+            event.stopImmediatePropagation()
+
             remove(item.id)
         })
 
-        editButton.addEventListener('click', () => {
+        editButton.addEventListener('click', (event) => {
+            event.stopImmediatePropagation()
             update(item)
         })
     }

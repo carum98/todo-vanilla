@@ -5,13 +5,12 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>ToDo App</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./styles/variables.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='./styles/index.css'>
     <script type="module" src='./scripts/index.js'></script>
 </head>
 <body>
     <header>
-        <h1>ToDo App</h1>
-
         <nav>
             <button id="logout">
                 Logout
@@ -22,22 +21,33 @@
         <section>
             <h2>
                 Lists
-                <button data-dialog="form-list">+</button>
+
+                <button data-dialog="form-list">
+                    <svg width="20" height="20" viewBox="0 0 512 512">
+                        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192s192-86 192-192Z"/>
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 176v160m80-80H176"/>
+                    </svg>
+                </button>
             </h2>
-            <ul id="lists"></ul>
+
+            <div id="lists"></ul>
         </section>
 
         <section>
             <h2>
                 ToDos
-                <button data-dialog="form-todo">+</button>
+                <button data-dialog="form-todo">
+                    <svg width="20" height="20" viewBox="0 0 512 512">
+                        <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192s192-86 192-192Z"/>
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 176v160m80-80H176"/>
+                    </svg>
+                </button>
             </h2>
+
             <ul id="todos"></ul>
         </section>
     </main>
-    <footer>
-        <small>ToDo App</small>
-    </footer>
+    <footer></footer>
 
     <!-- Dialogs -->
     <dialog id="form-list">
