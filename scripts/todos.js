@@ -61,7 +61,7 @@ function update(listId, todo) {
 }
 
 async function toggle(todo) {
-    const data = await $fetch(`/todos/${todo.id}/complete`, 'POST')
+    const data = await $fetch(`/todos/${todo.id}/toggle`, 'POST')
 
     const element = document.querySelector(`[data-todo-id="${todo.id}"]`)
 
