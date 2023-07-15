@@ -49,14 +49,9 @@ function update(listId, todo) {
     const form = dialog?.querySelector('form')
 
     const title = form?.querySelector('[name="title"]')
-    const description = form?.querySelector('[name="description"]')
 
     if (title instanceof HTMLInputElement) {
         title.value = todo.title
-    }
-
-    if (description instanceof HTMLInputElement) {
-        description.value = todo.description
     }
 }
 
