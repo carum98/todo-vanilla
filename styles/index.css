@@ -87,8 +87,16 @@ main {
     cursor: pointer;
     transition: background-color 0.1s ease-in-out;
 
+    & circle {
+        display: none;
+    }
+
     &[data-complete] {
         color: gray;
+
+        & circle {
+            display: block;
+        }
     }
 
     &:hover {
@@ -120,4 +128,13 @@ main {
     padding: 5px 10px;
     background-color: transparent;
     color: var(--primary-color);
+}
+
+.drag {
+    cursor: grab;
+    color: gray;
+
+    svg {
+        pointer-events: none;
+    }
 }

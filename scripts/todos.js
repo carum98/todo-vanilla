@@ -1,4 +1,5 @@
 import { openDialog, openDialogConfirm } from './dialogs.js'
+import { dragElement } from './drag.js'
 import { $fetch } from './helpers.js'
 
 async function get(listId) {
@@ -19,6 +20,10 @@ async function get(listId) {
     }
 
     ul.append(...items)
+
+    dragElement(ul, (id, newIndex) => {
+        $fetch(`/todos/${id}/move`, 'POST', { position: newIndex + 1 })
+    })
 }
 
 async function create(params) {
@@ -80,6 +85,8 @@ function buildTile(item, listId) {
     const li = document.createElement('li')
     li.classList.add('todo-item')
 
+    li.setAttribute('draggable', 'true')
+
     const removeButton = document.createElement('button')
     const editButton = document.createElement('button')
 
@@ -95,15 +102,18 @@ function buildTile(item, listId) {
     div.append(removeButton, editButton)
 
     const i = document.createElement('i')
+    const drag = document.createElement('i')
 
     if (item.is_complete) {
         li.setAttribute('data-complete', '')
-        i.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8z"/><circle cx="12" cy="12" r="5" fill="currentColor"/></svg>`
-    } else {
-        i.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8z"/></svg>`
     }
 
-    li.append(i, item.title, div)
+    drag.classList.add('drag')
+    drag.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M3 13h18v-2H3zm0 5h18v-2H3zm0-9h18V7H3z"/></svg>`
+    
+    i.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8z"/><circle cx="12" cy="12" r="5" fill="currentColor"/></svg>`
+
+    li.append(drag, i, item.title, div)
 
     li.addEventListener('click', () => {
         toggle(item)
