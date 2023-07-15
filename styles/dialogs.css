@@ -12,10 +12,30 @@ dialog::backdrop {
     backdrop-filter: blur(5px);
 }
 
-dialog [data-close] {
+dialog:not(#confirm) [data-close] {
     position: absolute;
     top: -30px;
     right: -25px;
     font-size: 35px;
     background: transparent;
+}
+
+#confirm {
+    & p {
+        margin-top: 0;
+    }
+
+    & button {
+        padding: 5px 10px;
+        border-radius: 5px;
+
+        &[data-confirm] {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        &[data-close] {
+            background-color: rgb(255, 50, 50);
+        }
+    }
 }
