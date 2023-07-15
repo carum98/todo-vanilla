@@ -1,5 +1,4 @@
 import { openDialog, openDialogConfirm } from './dialogs.js'
-import { dragElement } from './drag.js'
 import { $fetch } from './helpers.js'
 
 async function get(listId) {
@@ -20,10 +19,6 @@ async function get(listId) {
     }
 
     ul.append(...items)
-
-    dragElement(ul, (id, newIndex) => {
-        $fetch(`/todos/${id}/move`, 'POST', { position: newIndex + 1 })
-    })
 }
 
 async function create(params) {
@@ -41,7 +36,7 @@ async function remove(id) {
         await $fetch(`/todos/${id}`, 'DELETE')
 
         const button = document.querySelector(`[data-todo-id="${id}"]`)
-        button?.parentElement?.remove()
+        button?.remove()
     })
 }
 
@@ -74,11 +69,16 @@ async function toggle(todo) {
     }
 }
 
+async function move(id, newIndex) {
+    await $fetch(`/todos/${id}/move`, 'POST', { position: newIndex + 1 })
+}
+
 export default {
     get,
     create,
     toggle,
-    remove
+    remove,
+    move,
 }
 
 function buildTile(item, listId) {

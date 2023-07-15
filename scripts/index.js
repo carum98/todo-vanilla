@@ -1,5 +1,6 @@
 
 import { openDialog, openDialogConfirm } from './dialogs.js'
+import { dragElement } from './drag.js'
 
 import List from './lists.js'
 import Todos from './todos.js'
@@ -40,4 +41,8 @@ function init() {
             })
         })
     }
+
+    const todoList = document.getElementById('todos')
+
+    dragElement(todoList, Todos.move)
 }

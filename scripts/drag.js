@@ -12,10 +12,18 @@ export function dragElement(list, callback) {
     list.addEventListener('drop', async (event) => {
         event.preventDefault()
 
+        const target = event.target
+
+        if (!(target instanceof HTMLLIElement)) {
+            return
+        }
+
         const id = event.dataTransfer.getData('text/plain')
         const todo = document.querySelector(`[data-todo-id="${id}"]`)
 
-        const target = event.target
+        if (!(todo instanceof HTMLLIElement)) {
+            return
+        }
 
         const index = [...list.children].indexOf(todo)
         const newIndex = [...list.children].indexOf(target)
