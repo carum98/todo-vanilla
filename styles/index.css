@@ -22,16 +22,21 @@ main {
     margin: 0 auto;
 
     min-width: 800px;
+}
 
-    & h2 > button {
+.header-table {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    & > h2 {
+        margin: 0;
+    }
+
+    & > button {
         background-color: transparent;
         color: var(--primary-color);
         border: none;
-    }
-
-    > section:first-of-type {
-        border-right: 1px solid gray;
-        padding-right: var(--padding);
     }
 }
 
@@ -40,6 +45,8 @@ main {
     display: flex;
     flex-flow: column;
     gap: 15px;
+    max-height: 80vh;
+    overflow: scroll;
 }
 
 .list-item {
