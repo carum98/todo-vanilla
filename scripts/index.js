@@ -4,12 +4,14 @@ import { dragElement } from './drag.js'
 
 import List from './lists.js'
 import Todos from './todos.js'
+import { ColorPicker } from './webcomponents/color-picker.js'
 
 if (!sessionStorage.getItem('token')) {
     window.location.href = 'login.html'
 }
 
 window.addEventListener('DOMContentLoaded', init, { once: true })
+window.customElements.define('color-picker', ColorPicker)
 
 function init() {
     List.get()

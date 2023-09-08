@@ -2,7 +2,7 @@ dialog {
     background-color: var(--base);
     border: none;
     border-radius: 15px;
-    width: 250px;
+    width: 270px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     overflow: unset;

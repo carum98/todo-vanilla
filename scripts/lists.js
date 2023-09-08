@@ -1,6 +1,7 @@
 import Todos from './todos.js'
 import { $fetch } from './helpers.js'
 import { openDialog, openDialogConfirm } from './dialogs.js'
+import { ColorPicker } from './webcomponents/color-picker.js'
 
 async function get() {
     const ul = document.getElementById('lists')
@@ -50,8 +51,8 @@ function update(item) {
         name.value = item.name
     }
 
-    if (color instanceof HTMLInputElement) {
-        color.value = item.color
+    if (color instanceof ColorPicker) {
+        color.setAttribute('value', item.color)
     }
 }
 
