@@ -66,17 +66,21 @@ export default {
 function buildTile(item) {
     const button = document.createElement('button')
     button.classList.add('list-item')
+    button.setAttribute('data-list-id', item.id)
+
+    const count = document.createElement('span')
+    count.classList.add('count')
+    count.innerText = item.count.pending
 
     const removeButton = document.createElement('button')
     const editButton = document.createElement('button')
 
-    const span = document.createElement('span')
-
-    span.style.backgroundColor = item.color
+    const color = document.createElement('span')
+    color.classList.add('color')
+    color.style.backgroundColor = item.color
 
     button.setAttribute('data-list-id', item.id)
-
-    button.append(span, item.name)
+    button.append(color, item.name, count)
 
     const div = document.createElement('div')
     

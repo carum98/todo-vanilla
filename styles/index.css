@@ -58,7 +58,7 @@ main {
     gap: 10px;
     background-color: #3b3b3b;
 
-    & span {
+    & .color {
         display: inline-block;
         height: 15px;
         width: 15px;
@@ -66,11 +66,27 @@ main {
         border-radius: 50%;
     }
 
-    &:hover, &[data-active] {
+    & .count {
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background-color: var(--background);
+        opacity: 0.6;
+        text-align: center;
+        line-height: 20px;
+        font-size: 12px;
+        margin-left: auto;
+    }
+
+    &:hover {
         background-color: #202020;
 
         & .actions {
             display: inline-block;
+        }
+
+        & .count {
+            display: none;
         }
     }
 }

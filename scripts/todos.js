@@ -29,6 +29,8 @@ async function create(params) {
     await $fetch(`/lists/${listId}/todos`, 'POST', params)
 
     get(listId)
+
+    handlerCount.increment()
 }
 
 async function remove(id) {
@@ -37,6 +39,8 @@ async function remove(id) {
 
         const button = document.querySelector(`[data-todo-id="${id}"]`)
         button?.remove()
+
+        handlerCount.decrement()
     })
 }
 
@@ -63,8 +67,10 @@ async function toggle(todo) {
     if (element instanceof HTMLElement) {
         if (data.is_complete) {
             element.setAttribute('data-complete', '')
+            handlerCount.decrement()
         } else {
             element.removeAttribute('data-complete')
+            handlerCount.increment()
         }
     }
 }
@@ -132,4 +138,25 @@ function buildTile(item, listId) {
     })
 
     return li
+}
+
+const handlerCount = {
+    element() {
+        const active = document.querySelector('[data-active]')
+        const listId = active?.getAttribute('data-list-id') 
+
+        return document.querySelector(`[data-list-id="${listId}"] .count`)
+    },
+    increment() {
+        const count = this.element()
+        
+        // @ts-ignore
+        count.textContent = parseInt(count.textContent) + 1
+    },
+    decrement() {
+        const count = this.element()
+
+        // @ts-ignore
+        count.textContent = parseInt(count.textContent) - 1
+    }
 }
