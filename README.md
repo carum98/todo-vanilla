@@ -1,6 +1,6 @@
 # <img src="https://github.com/carum98/todo-vanilla/assets/40967143/90028355-59af-4d3d-aeb3-1343e475d5c4" width="30" height="30" /> ToDo App
 
-ToDo App with JavaScript Vanilla
+ToDo App with HTML, CSS and JavaScript (Not libraries)
 
 Backend: [ToDo API](https://github.com/carum98/todo-api)
 
